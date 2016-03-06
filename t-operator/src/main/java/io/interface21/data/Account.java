@@ -15,6 +15,10 @@
  */
 package io.interface21.data;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -29,11 +33,16 @@ import java.util.Collection;
  * @since 1.0
  */
 @Document
+@RequiredArgsConstructor
+@NoArgsConstructor
+@Data
 public class Account {
 
     @Id
     String id;
-
+    @NonNull
+    String name;
     @DBRef
+    @NonNull
     Collection<Stamplet> stamplets;
 }

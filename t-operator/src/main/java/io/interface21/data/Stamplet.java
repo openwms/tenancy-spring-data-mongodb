@@ -15,8 +15,14 @@
  */
 package io.interface21.data;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.io.Serializable;
 
 /**
  * A Stamplet.
@@ -25,9 +31,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @version 1.0
  * @since 1.0
  */
-@Document()
-public class Stamplet {
+@Document(collection = "#{T(org.ameba.tenancy.TenantHolder).getCurrentTenant()}-Stamplet")
+@RequiredArgsConstructor
+@NoArgsConstructor
+@Data
+public class Stamplet implements Serializable {
 
     @Id
     String id;
+    @NonNull
+    String uuid;
 }

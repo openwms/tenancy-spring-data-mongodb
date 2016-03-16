@@ -19,6 +19,10 @@ the first approach to get it to work.
 
 ...
 
-## (2) Call Java methods from SpEL Expressions
+## (3) Call Java methods from SpEL Expressions
+
+...
+
+## (4) Using a Discriminator Property
 
 ...

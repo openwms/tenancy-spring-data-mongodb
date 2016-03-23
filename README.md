@@ -12,7 +12,7 @@ why we were looking for other approaches and discussed those with Thomas Darimon
 
 ## (1) Separate Collections using the T-operator
 
-Springs SpEL provides a nice `#{T(..)}` operator that resolves full-qualified Java classes that are then used to invoke methods on. It was
+Springs SpEL provides a nice `#{T(..)}` operator to resolve full-qualified Java classes that are then used to invoke methods on. It was
 the first approach to get it to work.
 
 ## (2) Using pre-compiled SpEL expressions
@@ -25,4 +25,7 @@ the first approach to get it to work.
 
 ## (4) Using a Discriminator Property
 
-...
+Using a discriminator property value is different to the approaches we've seen so far in that all tenants share the same collection but are
+differentiated by a more technical property on each Document. This approach is takes from the area of relational databases where a dedicated
+column value distinguishes between different tenants. This solution does not fulfill the requirement of data separation by collections and
+should only be mentioned here for the sake of completeness.

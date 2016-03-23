@@ -20,6 +20,9 @@
     </description>
 
     <modules>
+        <module>compiled-spel</module>
+        <module>desc-value</module>
+        <module>spel-function</module>
         <module>t-operator</module>
     </modules>
 

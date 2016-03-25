@@ -4,7 +4,7 @@ This sample application shows differences between SpEL expression evaluation on 
 
 ## Starting Point
 
-With Stamplets product we had the requirement to separate data based on incoming tenant information. This tenant information is sent
+With Stamplets project we had the requirement to separate data based on incoming tenant information. This tenant information is sent
 by mobile as well as web clients as part of the http header as an attribute. Based on this context information the proper set of MongoDB
 collection is chosen in the persistence layer. In addition the tenant information can change dynamically. Tenants may be created on demand.
 This can be realized in different ways. Our first approach was to go with alt. 1 but we realized that we ran into performance issues, that's
@@ -13,7 +13,10 @@ why we were looking for other approaches and discussed those with Thomas Darimon
 ## (1) Separate Collections using the T-operator
 
 Springs SpEL provides a nice `#{T(..)}` operator to resolve full-qualified Java classes that are then used to invoke methods on. It was
-the first approach to get it to work.
+the first approach to get it to work. The flow is as follows:
+- An incoming client request hold the tenant information as http header attribute
+- A servlet filter expects this header attribute and stores the current tenant in a thread-local context object
+- At the persistence layer this context information is resolved with the T-operator to separate the MongoDB collection.
 
 ## (2) Using pre-compiled SpEL expressions
 
